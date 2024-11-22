@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+        .order-status {
+            font-weight: bold;
+        }
+        .empty-message {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 18px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>My Orders</h2>
+        <div id="orderList"></div>
+        <button onclick="window.location.href='dashboard.html'" style="width: 100%; padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            Back to Dashboard
+        </button>
+    </div>
+
+    <script>
+        // Function to fetch order history data from backend
+        function fetchOrderHistory() {
+            const orderListDiv = document.getElementById('orderList');
+
+            // API URL to fetch orders from the backend
+            const apiUrl = 'http://localhost:3000/api/orders'; // Adjust URL as needed
+
+            fetch(apiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.length === 0) {
+                        orderListDiv.innerHTML = '<div class="empty-message">No orders found.</div>';
+                    } else {
+                        let tableHTML = '<table><thead><tr><th>Order ID</th><th>Date</th><th>Items</th><th>Total Amount</th><th>Status</th></tr></thead><tbody>';
+                        data.forEach(order => {
+                            tableHTML += ` 
+                                <tr>
+                                    <td>${order.orderId}</td>
+                                    <td>${order.date}</td>
+                                    <td>${order.items}</td>
+                                    <td>${order.totalAmount}</td>
+                                    <td class="order-status">${order.status}</td>
+                                </tr>
+                            `;
+                        });
+                        tableHTML += '</tbody></table>';
+                        orderListDiv.innerHTML = tableHTML;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching order data:', error);
+                    orderListDiv.innerHTML = '<div class="empty-message">Failed to load orders. Please try again later.</div>';
+                });
+        }
+
+        // Function to add an order (send order data to the backend)
+        function addOrder() {
+            const newOrder = {
+                orderId: '3',
+                date: '2024-11-03',
+                items: 'Adidas Jacket, Under Armour Socks',
+                totalAmount: '$120',
+                status: 'Shipped'
+            };
+
+            // API URL to add a new order to the backend
+            const apiUrl = 'http://localhost:3000/api/orders'; // Adjust URL as needed
+
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newOrder)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('New Order Added:', data);
+                    fetchOrderHistory();  // Refresh the orders list after adding a new one
+                })
+                .catch(error => {
+                    console.error('Error adding order:', error);
+                });
+        }
+
+        // Call the fetch function to display orders on page load
+        fetchOrderHistory();
+
+        // Uncomment this line to add an order when needed
+        // addOrder();
+    </script>
+</body>
+</html>

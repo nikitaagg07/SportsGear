@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        .cart-table th,
+        .cart-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-table th {
+            background-color: #f8f9fa;
+        }
+
+        .product-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .delivery-info {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input[type="tel"],
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .gift-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .gift-wrapper input[type="checkbox"] {
+            margin: 0;
+        }
+
+        .gift-wrapper label {
+            font-weight: normal;
+            margin: 0;
+        }
+
+        .summary-table {
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            border-collapse: collapse;
+        }
+
+        .summary-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .summary-table tr:last-child td {
+            border-top: 2px solid #000;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .coupons-section {
+            width: 100%;
+            max-width: 350px;
+            margin-right: 20px;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .coupons-section h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .coupon-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .coupon-item h3 {
+            font-size: 16px;
+            margin: 0;
+            color: #2196F3;
+        }
+
+        .coupon-item p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .summary-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        
+        .coupon-input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .btn-apply {
+            background-color: #2196F3;
+        }
+
+        .btn-apply:hover {
+            background-color: #1976D2;
+        }
+
+        .address-list {
+            margin-bottom: 20px;
+        }
+
+        .address-card {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            background: white;
+        }
+
+        .address-card.selected {
+            border: 2px solid #4CAF50;
+            background: #f0f9f0;
+        }
+
+        .address-radio {
+            margin-top: 3px;
+        }
+
+        .address-details {
+            flex-grow: 1;
+        }
+
+        .address-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-address {
+            padding: 6px 12px;
+            font-size: 14px;
+            background-color: #f8f9fa;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: white;
+            margin: 50px auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .address-form {
+            display: grid;
+            gap: 15px;
+        }
+
+        .address-form input,
+        .address-form textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .address-form textarea {
+            height: 80px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .no-addresses {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Shopping Cart</h1>
+        <table class="cart-table" id="cartItems">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody id="cartItemsBody"></tbody>
+        </table>
+
+
+        <div class="delivery-info">
+            <h2>Delivery Information</h2>
+
+            <div class="address-list" id="addressList">
+                <!-- Addresses will be dynamically added here -->
+            </div>
+
+            <div class="form-group">
+                <button class="btn" onclick="showAddAddressModal()" id="addAddressBtn">Add New Address</button>
+            </div>
+
+            <div class="form-group">
+                <label for="contact">Contact Number</label>
+                <input type="tel" id="contact" pattern="[0-9]{10}" maxlength="10"
+                    placeholder="Enter 10-digit mobile number" required>
+            </div>
+
+            <div class="form-group">
+                <div class="gift-wrapper">
+                    <input type="checkbox" id="isGift" onchange="updateTotal()">
+                    <label for="isGift">This is a gift (Additional ₹50 for gift wrapping)</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Address Modal -->
+        <div id="addressModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="hideAddressModal()">&times;</span>
+                <h2>Add New Address</h2>
+                <form id="addressForm" class="address-form" onsubmit="saveAddress(event)">
+                    <div class="form-row">
+                        <input type="text" id="fullName" placeholder="Full Name" required>
+                        <input type="text" id="phoneNumber" pattern="[0-9]{10}" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" id="pincode" pattern="[0-9]{6}" placeholder="Pincode" required>
+                        <input type="text" id="state" placeholder="State" required>
+                    </div>
+                    <input type="text" id="city" placeholder="City" required>
+                    <textarea id="streetAddress" placeholder="Street Address, House No." required></textarea>
+                    <button type="submit" class="btn">Save Address</button>
+                </form>
+            </div>
+        </div>
+
+
+            <div class="form-group">
+                <label for="contact">Contact Number</label>
+                <input type="tel" id="contact" pattern="[0-9]{10}" maxlength="10" placeholder="Enter 10-digit mobile number" required>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="isGift" onchange="updateTotal()">
+                <label for="isGift">This is a gift (Additional ₹50 for gift wrapping)</label>
+            </div>
+        
+
+        <div class="coupon-section">
+            <input type="text" class="coupon-input" id="couponCode" placeholder="Enter coupon code">
+            <button class="btn" onclick="applyCoupon()">Apply</button>
+        </div>
+        <!-- Order Summary -->
+        <div class="summary-container">
+            <!-- Coupons Available Section -->
+            <div class="coupons-section">
+                <h2>Coupons Available</h2>
+                <div class="coupon-item">
+                    <h3>SAVE10</h3>
+                    <p>Get 10% off on orders over ₹500.</p>
+                </div>
+                <div class="coupon-item">
+                    <h3>WELCOME20</h3>
+                    <p>Get 20% off on orders over ₹500.</p>
+                </div>
+                <div class="coupon-item">
+                    <h3>FREESHIP</h3>
+                    <p>Free shipping on orders above ₹300.</p>
+                </div>
+                <div class="coupon-item">
+                    <h3>GIFT50</h3>
+                    <p>Get 50% on gift wrapping.</p>
+                </div>
+            </div>
+
+        <table class="summary-table">
+            <tr><td>Subtotal:</td><td id="subtotal">₹0.00</td></tr>
+            <tr><td>Delivery Charges:</td><td id="deliveryCharges">₹40.00</td></tr>
+            <tr id="giftRow" style="display: none;"><td>Gift Wrapping:</td><td id="giftCharges">₹50.00</td></tr>
+            <tr id="discountRow" style="display: none;"><td>Discount:</td><td id="discount">-₹0.00</td></tr>
+            <tr><td>Total Amount:</td><td id="totalAmount">₹0.00</td></tr>
+        </table>
+
+       
+    </div>
+    <button class="btn" onclick="proceedToPayment()">Place order</button>
+</div>  
+    <script>
+        let totalAmount = 0;
+        let discount = 0;
+        const deliveryCharges = 40;
+        const giftCharges = 50;
+        let isGift = false;
+
+        function loadCartItems() {
+            const cartItemsBody = document.getElementById('cartItemsBody');
+            cartItemsBody.innerHTML = '';
+
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            totalAmount = 0;
+
+            cart.forEach((item, index) => {
+                const price = typeof item.price === 'string' ? parseFloat(item.price.replace('₹', '').replace(',', '')) : item.price;
+                const row = `
+                    <tr>
+                        <td>${item.title}</td>
+                        <td>₹${price.toFixed(2)}</td>
+                        <td><span class="remove-btn" style="cursor:pointer" onclick="removeItem(${index})">-</span></td>
+                    </tr>
+                `;
+                cartItemsBody.insertAdjacentHTML('beforeend', row);
+                totalAmount += price;
+            });
+
+            updateTotal();
+        }
+
+        function removeItem(index) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCartItems();
+        }
+
+        function updateTotal() {
+            const subtotal = totalAmount;
+            let finalAmount = subtotal + deliveryCharges;
+            if (isGift) {
+                finalAmount += giftCharges;
+                document.getElementById('giftRow').style.display = 'table-row';
+            } else {
+                document.getElementById('giftRow').style.display = 'none';
+            }
+            finalAmount -= discount;
+            document.getElementById('subtotal').textContent = `₹${subtotal.toFixed(2)}`;
+            document.getElementById('totalAmount').textContent = `₹${finalAmount.toFixed(2)}`;
+            document.getElementById('discount').textContent = `-₹${discount.toFixed(2)}`;
+        }
+
+               // Initialize addresses from localStorage
+               let addresses = JSON.parse(localStorage.getItem('addresses')) || [];
+        let selectedAddressId = localStorage.getItem('selectedAddressId');
+
+        function initializeAddresses() {
+            renderAddresses();
+            updateAddButton();
+        }
+
+        function renderAddresses() {
+            const addressList = document.getElementById('addressList');
+            if (addresses.length === 0) {
+                addressList.innerHTML = `
+                    <div class="no-addresses">
+                        No addresses saved yet. Please add a delivery address.
+                    </div>
+                `;
+                return;
+            }
+
+            addressList.innerHTML = addresses.map(address => `
+                <div class="address-card ${address.id === selectedAddressId ? 'selected' : ''}">
+                    <input type="radio" name="selectedAddress" 
+                           class="address-radio"
+                           ${address.id === selectedAddressId ? 'checked' : ''}
+                           onchange="selectAddress('${address.id}')">
+                    <div class="address-details">
+                        <strong>${address.fullName}</strong><br>
+                        ${address.streetAddress}<br>
+                        ${address.city}, ${address.state} - ${address.pincode}<br>
+                        Phone: ${address.phoneNumber}
+                    </div>
+                    <div class="address-actions">
+                        <button class="btn btn-address btn-delete" onclick="deleteAddress('${address.id}')">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateAddButton() {
+            const addButton = document.getElementById('addAddressBtn');
+            addButton.disabled = addresses.length >= 5;
+            addButton.style.opacity = addresses.length >= 5 ? '0.5' : '1';
+        }
+
+        function showAddAddressModal() {
+            if (addresses.length >= 5) {
+                alert('You can only add up to 5 addresses');
+                return;
+            }
+            document.getElementById('addressModal').style.display = 'block';
+            document.getElementById('addressForm').reset();
+        }
+
+        function hideAddressModal() {
+            document.getElementById('addressModal').style.display = 'none';
+        }
+
+        function saveAddress(event) {
+            event.preventDefault();
+
+            const newAddress = {
+                id: 'addr_' + Date.now(),
+                fullName: document.getElementById('fullName').value,
+                phoneNumber: document.getElementById('phoneNumber').value,
+                pincode: document.getElementById('pincode').value,
+                state: document.getElementById('state').value,
+                city: document.getElementById('city').value,
+                streetAddress: document.getElementById('streetAddress').value
+            };
+
+            addresses.push(newAddress);
+            localStorage.setItem('addresses', JSON.stringify(addresses));
+
+            if (!selectedAddressId) {
+                selectAddress(newAddress.id);
+            }
+
+            hideAddressModal();
+            renderAddresses();
+            updateAddButton();
+        }
+
+        function selectAddress(addressId) {
+            selectedAddressId = addressId;
+            localStorage.setItem('selectedAddressId', addressId);
+            renderAddresses();
+        }
+
+        function deleteAddress(addressId) {
+            if (!confirm('Are you sure you want to delete this address?')) {
+                return;
+            }
+
+            addresses = addresses.filter(addr => addr.id !== addressId);
+            localStorage.setItem('addresses', JSON.stringify(addresses));
+
+            if (selectedAddressId === addressId) {
+                selectedAddressId = addresses.length > 0 ? addresses[0].id : null;
+                localStorage.setItem('selectedAddressId', selectedAddressId);
+            }
+
+            renderAddresses();
+            updateAddButton();
+        }
+
+
+        function applyCoupon() {
+            const couponCode = document.getElementById('couponCode').value.toUpperCase();
+            const subtotal = totalAmount;
+
+            if (couponCode === 'SAVE10' && subtotal > 500) {
+                discount = subtotal * 0.1;
+            } else if (couponCode === 'WELCOME20' && subtotal > 500) {
+                discount = subtotal * 0.2;
+            } else if (couponCode === 'FREESHIP' && subtotal > 300) {
+                discount = deliveryCharges;
+            } else if (couponCode === 'GIFT50') {
+                discount = giftCharges / 2;
+            } else {
+                discount = 0;
+                alert("Invalid or inapplicable coupon code.");
+            }
+            document.getElementById('discountRow').style.display = discount > 0 ? 'table-row' : 'none';
+            updateTotal();
+        }
+
+        function proceedToPayment() {
+            alert("Your order has been placed");
+        }
+
+        document.getElementById('isGift').addEventListener('change', function() {
+            isGift = this.checked;
+            updateTotal();
+        });
+
+        loadCartItems();
+    </script>
+</body>
+
+</html>

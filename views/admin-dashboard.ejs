@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* Reset and basic styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f4f6f8;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Navbar styling */
+nav {
+    width: 100%;
+    background-color: #2d3748;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+nav h1 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav ul li a {
+    color: #cbd5e0;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #4a5568;
+    color: #ffffff;
+}
+
+/* Content styling */
+.content {
+    max-width: 800px;
+    width: 90%;
+    background-color: #ffffff;
+    margin-top: 2rem;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.content h2 {
+    font-size: 2rem;
+    color: #2d3748;
+    margin-bottom: 1rem;
+}
+
+.content p {
+    font-size: 1.1rem;
+    color: #4a5568;
+}
+
+/* Button styling */
+button, .content a {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: #3182ce;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+button:hover, .content a:hover {
+    background-color: #2b6cb0;
+}
+
+/* Media queries */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .content {
+        padding: 1.5rem;
+    }
+}
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <h1>Admin Dashboard</h1>
+        <ul>
+            <li><a href="/add-products">Add Product</a></li>
+            <li><a href="/view-customers">View Customers</a></li>
+            <li><a href="/" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        <h2>Welcome, Admin</h2>
+        <p>Choose an action from the menu to get started.</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

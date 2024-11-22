@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#product-grid {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centers the grid horizontally */
+}
+
+.product-card {
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    width: 100%; /* Ensures full width of column */
+    max-width: 350px; /* Controls horizontal size */
+    margin: 10px; /* Adds spacing between cards */
+    padding: 20px; /* Adds padding inside the card */
+    text-align: center; /* Center text inside the card */
+    background-color: #fff; /* Background color for the card */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-image {
+    height: 200px; /* Control image height */
+    width: 100%; /* Full width */
+    object-fit: cover; /* Maintain aspect ratio */
+    border-radius: 8px; /* Match card corner rounding */
+}
+
+.rating-container {
+    margin: 10px 0; /* Space between rating and other elements */
+}
+
+.stars {
+    color: #FFA500; /* Gold color for stars */
+}
+
+.product-brand {
+    font-weight: bold;
+    color: #333;
+    margin: 5px 0; /* Space above and below brand name */
+}
+
+.product-name {
+    font-size: 1.2em; /* Larger font size for product name */
+    color: #333;
+    margin: 5px 0; /* Space above and below product name */
+}
+
+.product-description {
+    color: #555;
+    margin: 10px 0; /* Space around description */
+}
+
+.product-price {
+    font-size: 1.5em; /* Larger font size for price */
+    color: #333;
+    margin: 10px 0; /* Space around price */
+}
+
+.add-to-cart {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Button padding */
+    border-radius: 5px; /* Rounded button corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.add-to-cart:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+@media (min-width: 992px) {
+    .col-md-4 {
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%; /* Three cards per row on larger screens */
+    }
+}
+#rn,#ms{
+    object-fit:scale-down;
+    object-position: center;
+}
+#c,#d,#e,#f{
+    object-fit:scale-down;
+    object-position: center;
+}

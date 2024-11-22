@@ -1,0 +1,93 @@
+.product-image {
+    height: fit-content;
+    width: fit-content;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; 
+} 
+
+.product-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.rating-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.stars {
+    font-size: 1.5rem;
+    color: #f39c12; /* Star color */
+}
+
+.review-count {
+    font-size: 1rem;
+    color: #777;
+    margin-left: 10px;
+}
+
+.price-details {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.current-price {
+    color: #d9534f; /* Price color */
+    font-weight: bold;
+}
+
+.savings {
+    margin-left: 10px;
+    font-size: 1rem;
+    color: #5bc0de; /* Savings color */
+}
+
+.mrp {
+    display: block;
+    text-decoration: line-through;
+    color: #777;
+    font-size: 1rem;
+}
+
+.tax-info {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.brand-icon {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.brand-logo {
+    width: 70px; /* Adjust as needed */
+    margin-right: 10px;
+}
+
+.top-brand {
+    font-weight: bold;
+    color: #28a745; /* Green color for "Top Brand" */
+    font-size: 1rem;
+}
+
+.product-details {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.add-to-cart {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart:hover {
+    background-color: #218838; /* Darker shade on hover */
+}

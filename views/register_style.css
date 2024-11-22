@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #d9e4ff 0%, #ffffff 100%);
+    color: #2d3748;
+    padding: 20px;
+}
+
+body, html {
+    height: 100%;
+}
+
+.form-container {
+    max-width: 500px;
+    width: 100%;
+    padding: 3rem 3.5rem; /* Padding inside the form */
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 24px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    position: relative;
+    animation: slideUp 0.6s ease forwards;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto; /* Added margin to the top and bottom of the form container */
+}
+
+/* Slide Up Animation */
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.form-container h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+/* Input Group Styling */
+.input-group {
+    margin-bottom: 1.5rem; /* Space between input groups */
+}
+
+/* Labels */
+.form-label {
+    display: block; /* Ensures the label takes up full width */
+    margin-bottom: 0.5rem; /* Space between label and input */
+    font-weight: 500;
+    color: #4a5568;
+}
+
+/* Input Fields */
+.form-control {
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+    font-size: 1rem;
+    transition: all 0.3s ease, box-shadow 0.3s ease; /* Include box-shadow */
+    background-color: rgba(255, 255, 255, 0.95);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+    outline: none; /* Remove default outline */
+}
+
+/* Button Styling */
+.btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border: none;
+    padding: 1.15rem;
+    width: 100%;
+    font-size: 1.1rem;
+    color: #fff;
+    border-radius: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.25); /* Add focus state */
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #764ba2, #667eea);
+    transform: translateY(-3px); /* More pronounced hover effect */
+}
+
+.success-notification {
+    position: relative; /* Ensure it appears above the form */
+    margin-bottom: 1rem; /* Space between notification and form */
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #48bb78, #38a169);
+    color: white;
+    border-radius: 12px;
+    text-align: center; /* Center text */
+    display: none; /* Initially hidden */
+    font-weight: 500;
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.5s ease; /* Smooth transition */
+}
+
+.success-notification.show {
+    display: block; /* Show when class 'show' is added */
+    opacity: 1; /* Show with fade in */
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    .form-container {
+        padding: 1.5rem; /* Reduced padding for smaller devices */
+    }
+
+    .form-container h1 {
+        font-size: 2rem; /* Smaller heading for mobile */
+    }
+
+    .form-control {
+        padding: 0.875rem 1rem;
+    }
+
+    .btn-primary {
+        padding: 1rem; /* Smaller button padding */
+    }
+}

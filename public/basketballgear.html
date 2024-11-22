@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/gear.css">
+
+    <title>Basketball Products</title>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+
+
+</head>
+
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Remove loading overlay
+        window.addEventListener('load', function () {
+            document.querySelector('.loading-overlay').style.opacity = 0;
+            setTimeout(() => {
+                document.querySelector('.loading-overlay').style.display = 'none';
+            }, 500);
+        });
+    </script>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">SportsGear</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto"> <!-- Use ms-auto to align to the right -->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index1.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="product.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">My Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Logout</a>
+                    </li>
+
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top: 70px;"> <!-- Adjust margin for fixed navbar -->
+
+        <div class="row" id="product-grid">
+            <!-- Basketball 1 -->
+            <div class="product-card">
+                <a href="nbagameball.html"> <!-- Replace with the actual product link -->
+                    <img src="./images/basketballgear/BBpop.jpg" id="c" alt="NBA Official Game Ball" class="product-image">
+                    <div class="rating-container">
+                        <span class="stars">★★★★★</span>
+                        <span class="review-count">(5.0 • 3.5k)</span>
+                    </div>
+                    <div class="product-brand">NBA</div>
+                    <h3 class="product-name">NBA Official Game Ball</h3>
+                    <p class="product-description">Official NBA game basketball with premium composite leather.</p>
+                    <div class="product-price">₹4,999</div>
+                </a>
+                <button class="add-to-cart"><a href="nbagameball.html">See Product Details</a></button>
+            </div>
+        
+            <!-- Basketball 2 -->
+            <div class="product-card">
+                <a href="nikebasketball.html"> <!-- Replace with the actual product link -->
+                    <img src="./images/basketballgear/nikebb.jpg" id="c" alt="Nike Basketball" class="product-image">
+                    <div class="rating-container">
+                        <span class="stars">★★★★☆</span>
+                        <span class="review-count">(4.7 • 2.0k)</span>
+                    </div>
+                    <div class="product-brand">Nike</div>
+                    <h3 class="product-name">Nike Elite Basketball</h3>
+                    <p class="product-description">Durable and designed for the highest level of play.</p>
+                    <div class="product-price">₹3,999</div>
+                </a>
+                <button class="add-to-cart"><a href="nikebasketball.html">See Product Details</a></button>
+            </div>
+        
+            <!-- Basketball Shoes 1 -->
+            <div class="product-card">
+                <a href="nikelebron.html"> <!-- Replace with the actual product link -->
+                    <img src="./images/basketballgear/lebronsh.jpg" id="" alt="Nike LeBron Shoes" class="product-image">
+                    <div class="rating-container">
+                        <span class="stars">★★★★★</span>
+                        <span class="review-count">(4.8 • 1.8k)</span>
+                    </div>
+                    <div class="product-brand">Nike</div>
+                    <h3 class="product-name">Nike LeBron 18</h3>
+                    <p class="product-description">A signature basketball shoe known for comfort and performance.</p>
+                    <div class="product-price">₹12,499</div>
+                </a>
+                <button class="add-to-cart"><a href="nikelebron.html">See Product Details</a></button>
+            </div>
+        
+            <!-- Basketball Shoes 2 -->
+            <div class="product-card">
+                <a href="adidasball.html"> <!-- Replace with the actual product link -->
+                    <img src="./images/basketballgear/dame.webp" id="" alt="Adidas Basketball Shoes" class="product-image">
+                    <div class="rating-container">
+                        <span class="stars">★★★★☆</span>
+                        <span class="review-count">(4.6 • 1.2k)</span>
+                    </div>
+                    <div class="product-brand">Adidas</div>
+                    <h3 class="product-name">Adidas Dame 7</h3>
+                    <p class="product-description">Comfortable shoes designed for agility and speed on the court.</p>
+                    <div class="product-price">₹9,499</div>
+                </a>
+                <button class="add-to-cart"><a href="adidasball.html">See Product Details</a></button>
+            </div>
+        
+            <!-- Basketball Shorts -->
+            <div class="product-card">
+                <a href="basketballshorts.html"> <!-- Replace with the actual product link -->
+                    <img src="./images/basketballgear/under.webp" id="" alt="Basketball Shorts" class="product-image">
+                    <div class="rating-container">
+                        <span class="stars">★★★★★</span>
+                        <span class="review-count">(4.9 • 1.5k)</span>
+                    </div>
+                    <div class="product-brand">Under Armour</div>
+                    <h3 class="product-name">Under Armour Basketball Shorts</h3>
+                    <p class="product-description">Lightweight and breathable shorts for optimal movement.</p>
+                    <div class="product-price">₹2,299</div>
+                </a>
+                <button class="add-to-cart"><a href="basketballshorts.html">See Product Details</a></button>
+            </div>
+        
+            <!-- Basketball Accessories -->
+            <div class="product-card">
+                <a href="basketballjersey.html"> <!-- Replace with the actual product link -->
+                    <img src="./images/basketballgear/jersey.png" id="" alt="Basketball Jersey" class="product-image">
+                    <div class="rating-container">
+                        <span class="stars">★★★★☆</span>
+                        <span class="review-count">(4.8 • 1.2k)</span>
+                    </div>
+                    <div class="product-brand">Nike</div>
+                    <h3 class="product-name">Nike Basketball Jersey</h3>
+                    <p class="product-description">Breathable and lightweight jersey for optimal comfort and performance on the court.</p>
+                    <div class="product-price">₹2,499</div>
+                </a>
+                <button class="add-to-cart"><a href="basketballjersey.html">See Product Details</a></button>
+            </div>
+            
+        
+        </div>
+        
+
+    </div>
+    <!-- Footer HTML -->
+    <footer class="premium-footer">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-md-3 footer-col">
+                <h5>About SportsGear</h5>
+                <p class="mb-3" style="color: #a8a8a8; text-align: justify;">Your premium destination for high-quality sports equipment
+                    and athletic wear. Empowering athletes since 2020.</p>
+            </div>
+
+            <div class="col-md-3 footer-col" style="padding-left: 100px;">
+                <h5>Quick Links</h5>
+                <ul class="footer-links" style="padding-left: 0;">
+                    <li><a href="index1.html">Home</a></li>
+                    <li><a href="product.html">Products</a></li>
+                    <li><a href="cart.html">My Cart</a></li>
+                   
+                </ul>
+            </div>
+
+            <div class="col-md-3 footer-col">
+                <h5 style="padding-left: 25px;">Get In Touch</h5>
+                <div class="footer-contact-item mb-2">
+                    <i class="fas fa-map-marker-alt me-2"></i>
+                    <span>123 Sports Street, Athletic City, SP 12345</span>
+                </div>
+                <div class="footer-contact-item mb-2">
+                    <i class="fas fa-phone me-2"></i>
+                    <span>+1 (555) 123-4567</span>
+                </div>
+                <div class="footer-contact-item mb-2">
+                    <i class="fas fa-envelope me-2"></i>
+                    <span>support@sportsgear.com</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom text-center mt-4 pt-3 border-top">
+            &copy; 2024 SportsGear. All rights reserved.
+        </div>
+    </div>
+</footer>
+</body>
+</html>

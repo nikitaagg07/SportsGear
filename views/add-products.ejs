@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* Reset and basic styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f4f6f8;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Content styling */
+.content {
+    max-width: 500px;
+    width: 90%;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.content h2 {
+    font-size: 2rem;
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input[type="text"],
+input[type="number"] {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: #3182ce;
+}
+
+/* Button styling */
+button {
+    padding: 0.8rem;
+    font-size: 1rem;
+    background-color: #3182ce;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2b6cb0;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+    .content {
+        padding: 1.5rem;
+    }
+    
+    input[type="text"],
+    input[type="number"],
+    button {
+        font-size: 0.9rem;
+    }
+}
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="content">
+        <h2>Add Product</h2>
+        <form id="addProductForm">
+            <input type="text" id="productName" placeholder="Product Name" required>
+            <input type="text" id="productCategory" placeholder="Category" required>
+            <input type="number" id="productPrice" placeholder="Price" required>
+            <button type="submit">Add Product</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

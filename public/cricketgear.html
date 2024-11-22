@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/gear.css">
+
+    <title>Cricket Products</title>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+
+
+</head>
+
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Remove loading overlay
+        window.addEventListener('load', function () {
+            document.querySelector('.loading-overlay').style.opacity = 0;
+            setTimeout(() => {
+                document.querySelector('.loading-overlay').style.display = 'none';
+            }, 500);
+        });
+    </script>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">SportsGear</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto"> <!-- Use ms-auto to align to the right -->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index1.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="product.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">My Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Logout</a>
+                    </li>
+
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top: 70px;"> <!-- Adjust margin for fixed navbar -->
+
+        <div class="row" id="product-grid">
+            <!-- Cricket Bat 1 -->
+            <div class="product-card">
+                <a href="graybat.html"> <!-- Replace with the actual product link -->
+                    <img src="./images/cricketgear/graynicobat.jpg" id="a" alt="Cricket Bat 1" class="product-image"> 
+                    <div class="rating-container">  
+                        <span class="stars">★★★★★</span>  
+                        <span class="review-count">(4.9 • 2.0k)</span>  
+                    </div> 
+                    <div class="product-brand">Gray-Nicolls</div> 
+                    <h3 class="product-name">Gray-Nicolls Players Bat</h3> 
+                    <p class="product-description">High-quality cricket bat for professional play.</p> 
+                    <div class="product-price">₹15,999</div> 
+                </a>
+                <button class="add-to-cart"><a href="graybat.html">See Product Details</a></button> 
+            </div>
+            
+            <!-- Cricket Bat 2 -->
+            <div class="product-card">
+                <a href="edgebat.html"> <!-- Replace with the actual product link -->
+                    <img src="./images/cricketgear/prembat.webp" id="2" alt="Cricket Bat 2" class="product-image"> 
+                    <div class="rating-container"> 
+                        <span class="stars">★★★★☆</span> 
+                        <span class="review-count">(4.5 • 1.5k)</span> 
+                    </div> 
+                    <div class="product-brand">Sports Edge</div> 
+                    <h3 class="product-name">Sports Edge Premium Bat</h3> 
+                    <p class="product-description">A premium bat for power hitters.</p> 
+                    <div class="product-price">₹12,499</div> 
+                </a>
+                <button class="add-to-cart"><a href="edgebat.html">See Product Details</a></button> 
+            </div>
+            
+            <!-- Cricket Bat 3 -->
+            <div class="product-card">
+                <a href="helmet.html"> <!-- Replace with the actual product link -->
+                    <img src="./images/cricketgear/helmet.webp" id="c" alt="Cricket Helmet" class="product-image"> 
+                    <div class="rating-container"> 
+                        <span class="stars">★★★★★</span>  
+                        <span class="review-count">(4.7 • 1.2k)</span>  
+                    </div>  
+                    <div class="product-brand">Cricket Pro</div> 
+                    <h3 class="product-name">Cricket Helmet</h3> 
+                    <p class="product-description">Protective helmet designed for maximum safety.</p> 
+                    <div class="product-price">₹2,500</div> 
+                </a>
+                <button class="add-to-cart"><a href="helmet.html">See Product Details</a></button>  
+            </div>
+            
+
+            <!-- Cricket Ball 1 -->
+            
+            
+            <!-- Cricket Ball 2 -->
+            <div class="product-card">
+                <a href="fullkit.html"> <!-- Replace with the actual product link -->
+                    <img src="./images/cricketgear/fullkit.jpg" id="d" alt="Cricket Full Kit" class="product-image"> 
+                    <div class="rating-container"> 
+                        <span class="stars">★★★★★</span>  
+                        <span class="review-count">(4.8 • 2.5k)</span>  
+                    </div>   
+                    <div class="product-brand">Cricket Co.</div>  
+                    <h3 class="product-name">Complete Cricket Kit</h3>  
+                    <p class="product-description">Everything you need to start playing cricket: bat, ball, gloves, and pads.</p>   
+                    <div class="product-price">₹8,999</div>   
+                </a>
+                <button class="add-to-cart"><a href="fullkit.html">See Product Details</a></button>    
+            </div>
+            
+        
+            <!-- Cricket Glove 1 -->
+            <div class="product-card">  
+                <a href="glove.html"> <!-- Replace with the actual product link -->
+                    <img src="./images/cricketgear/gloves.jpg" id="e" alt="Cricket Glove 1" class="product-image">  
+                    <div class="rating-container">  
+                        <span class="stars">★★★★★</span>  
+                        <span class="review-count">(4.9 • 2.2k)</span>  
+                    </div>  
+                    <div class="product-brand">Skyhi SS</div>  
+                    <h3 class="product-name">Skyhi SS Gloves</h3>  
+                    <p class="product-description">Top-notch protection and comfort for your hands.</p>  
+                    <div class="product-price">₹2,999</div>  
+                </a>
+                <button class="add-to-cart"><a href="glove.html">See Product Details</a></button>  
+            </div> 
+
+            <!-- Cricket Glove 2 -->
+            <div class="product-card">  
+                <a href="pumaglove.html"> <!-- Replace with the actual product link -->
+                    <img src="./images/cricketgear/pumagloves.webp" id="f" alt="Cricket Glove 2" class="product-image">  
+                    <div class="rating-container">  
+                        <span class="stars">★★★★☆</span>  
+                        <span class="review-count">(4.6 • 1.0k)</span>  
+                    </div>  
+                    <div class="product-brand">Puma</div>  
+                    <h3 class="product-name">Puma Professional Gloves</h3>  
+                    <p class="product-description">Excellent durability and grip for batting and extra comfort.</p>  
+                    <div class="product-price">₹3,499</div>  
+                </a>
+                <button class="add-to-cart"><a href="pumaglove.html">See Product Details</a></button>  
+            </div>
+
+        </div>
+
+    </div>
+
+
+<!-- Footer HTML -->
+<footer class="premium-footer">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-md-3 footer-col">
+                <h5>About SportsGear</h5>
+                <p class="mb-3" style="color: #a8a8a8; text-align: justify;">Your premium destination for high-quality sports equipment
+                    and athletic wear. Empowering athletes since 2020.</p>
+            </div>
+
+            <div class="col-md-3 footer-col" style="padding-left: 100px;">
+                <h5>Quick Links</h5>
+                <ul class="footer-links" style="padding-left: 0;">
+                    <li><a href="index1.html">Home</a></li>
+                    <li><a href="product.html">Products</a></li>
+                    <li><a href="cart.html">My Cart</a></li>
+                   
+                </ul>
+            </div>
+
+            <div class="col-md-3 footer-col">
+                <h5 style="padding-left: 25px;">Get In Touch</h5>
+                <div class="footer-contact-item mb-2">
+                    <i class="fas fa-map-marker-alt me-2"></i>
+                    <span>123 Sports Street, Athletic City, SP 12345</span>
+                </div>
+                <div class="footer-contact-item mb-2">
+                    <i class="fas fa-phone me-2"></i>
+                    <span>+1 (555) 123-4567</span>
+                </div>
+                <div class="footer-contact-item mb-2">
+                    <i class="fas fa-envelope me-2"></i>
+                    <span>support@sportsgear.com</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom text-center mt-4 pt-3 border-top">
+            &copy; 2024 SportsGear. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

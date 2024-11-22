@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+      /* Enhanced Style for the customer list */
+body {
+    font-family: Arial, sans-serif; /* Set a clean, modern font */
+    background-color: #eef2f3; /* Light background color for better contrast */
+    margin: 0;
+    padding: 20px; /* Add padding around the body */
+}
+
+.content {
+    max-width: 800px; /* Limit the width of the content */
+    margin: auto; /* Center the content */
+}
+
+h2 {
+    text-align: center; /* Center the heading */
+    color: #333; /* Darker color for better readability */
+    margin-bottom: 20px; /* Add space below the heading */
+}
+
+/* Style for individual customer entries */
+.customer {
+    background-color: #fff; /* White background for each customer entry */
+    padding: 1.5rem; /* Increase padding for a more spacious feel */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    margin-bottom: 1rem; /* Space between entries */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for customer entries */
+.customer:hover {
+    transform: translateY(-2px); /* Slight lift effect on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Darker shadow on hover */
+}
+
+/* Styling for customer details */
+.customer strong {
+    color: #007bff; /* Blue color for labels */
+}
+
+.customer p {
+    margin: 0.5rem 0; /* Space between paragraphs */
+    font-size: 1rem; /* Font size */
+    color: #555; /* Gray color for better contrast */
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .customer {
+        padding: 1rem; /* Adjust padding on smaller screens */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Adjust heading size */
+    }
+}
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Customers</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="content">
+        <h2>View Customers</h2>
+        <div id="customersList"> <!-- List of customers will go here --> </div>
+    </div>
+
+    <script>
+        async function fetchCustomers() {
+            try {
+                const response = await fetch('/get-customers');
+                const customers = await response.json();
+                const customersList = document.getElementById('customersList');
+                
+                customers.forEach(customer => {
+                    const customerDiv = document.createElement('div');
+                    customerDiv.className = 'customer';
+                    customerDiv.innerHTML = `<strong>Username:</strong> ${customer.username} <br> <strong>Email:</strong> ${customer.email}`;
+                    customersList.appendChild(customerDiv);
+                });
+            } catch (error) {
+                console.error('Error fetching customers:', error);
+            }
+        }
+
+        // Fetch customers on page load
+        fetchCustomers();
+    </script>
+</body>
+</html>
